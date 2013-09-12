@@ -1,0 +1,23 @@
+{
+  "name": "eui64",
+  "version": "0.0.0",
+  "description": "JS library for dealing with IEEE-defined 64bit extended unique identifier.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdamMagaluk/eui64"
+  },
+  "keywords": [
+    "eui",
+    "mac",
+    "address"
+  ],
+  "author": "Adam Magaluk <AdamMagaluk@gmail.com>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/AdamMagaluk/eui64/issues"
+  }
+}
