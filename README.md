@@ -4,6 +4,8 @@ Node module for dealing 64bit IEEE mac addresses.
 
 [IEEE Spec](http://standards.ieee.org/develop/regauth/tut/eui64.pdf)
 
+[![Build Status](https://travis-ci.org/AdamMagaluk/eui64.png?branch=master)](https://travis-ci.org/AdamMagaluk/eui64)
+
 ## Install
 
 `npm install eui64`
