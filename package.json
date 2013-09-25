@@ -1,6 +1,6 @@
 {
   "name": "eui64",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JS library for dealing with IEEE-defined 64bit extended unique identifier.",
   "main": "eui64.js",
   "scripts": {
