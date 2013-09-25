@@ -2,14 +2,13 @@ var extend = require('extend')
 var debug  = require('debug')('eui64');
 
 var LENGTH = 8;
-var SEPERATORS = [':','-'];
+var separatorS = [':','-'];
 
 function genHex(ar){
   for(var i=0;i<LENGTH;i++){
     
     ar[i] = '0x' + ar[i];
-
-    if(isNaN(parseInt(ar[i])))
+    if(isNaN(parseInt(ar[i])) || ar[i].match(/(0[xX])?[a-fA-F0-9]+$/) === null)
       throw new Error('parse error non hex value');
   }
   return ar;
@@ -33,7 +32,7 @@ function Eui64(arg,opt) {
 
   this.options = {
     oui : 36,
-    seperator : ':'
+    separator : ':'
   }
 
   extend(this.options,opt);
@@ -41,18 +40,24 @@ function Eui64(arg,opt) {
   this._val = null;
 
   this._parse(arg);
-
-  this.__defineGetter__("oui",this._getOUI.bind(this));
 }
 
-Eui64.prototype._getOUI = function() {return 1;}
+Eui64.prototype.oui = function() {
+  if(this.options.oui === 36){
+    return this._val.readUInt32BE(0);
+  }else if(this.options.oui === 24){
+    return (this._val[0] << 16) + (this._val[1] << 8) + this._val[2];
+  }
+
+  throw new Error('Invalid oui of ' + this.options.oui )
+}
 
 Eui64.prototype.toString = function() {
   var r = '';
   for(var i=0;i<LENGTH;i++){
     r+=this._val[i].toString(16);
     if(i !== LENGTH-1)
-      r+=this.options.seperator;
+      r+=this.options.separator;
   }
   return r;
 };
@@ -82,14 +87,14 @@ Eui64.prototype._parseBuffer = function(buf){
 }
 
 Eui64.prototype._parseString = function(arg) {
-  for(var i=0;i<SEPERATORS.length;i++){
-    var s = SEPERATORS[i];
+  for(var i=0;i<separatorS.length;i++){
+    var s = separatorS[i];
     var idx = arg.indexOf(s);
     if(idx > 0){
 
       var ar = arg.split(s);
       if(ar.length !== LENGTH)
-        return null;
+        throw new Error("Length does not match")
 
       this._val = new Buffer(genHex(ar),'hex');
       return;
