@@ -41,7 +41,7 @@ Parse the given input and return an object or null on failure
 
     ```
         {
-          oui : 36, // OUI bit length
+          oui : 36, // OUI bit length 24 or 36
           separator : ':' // Separator to be used in toString()
         }
     ```
@@ -55,6 +55,6 @@ Output current value to string with each octet separated by ':'
 
 Return buffer of current value
 
-## Eui64.oui
+## Eui64.oui()
 
 Return Number representation of the oui, assumes 36 bit oui.
