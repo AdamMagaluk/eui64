@@ -21,5 +21,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AdamMagaluk/eui64/issues"
+  },
+  "dependencies": {
+    "buffer-equal": "0.0.0",
+    "debug": "~0.7.2",
+    "extend": "~1.2.1"
   }
 }
