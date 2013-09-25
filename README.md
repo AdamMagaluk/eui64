@@ -10,7 +10,7 @@ Node module for dealing 64bit IEEE mac addresses.
 
 `npm install eui64`
 
-## Usage
+## Example
 
 
 ```js
