@@ -2,6 +2,8 @@
 
 Node module for dealing 64bit IEEE mac addresses.
 
+[IEEE Spec](http://standards.ieee.org/develop/regauth/tut/eui64.pdf)
+
 ## Install
 
 `npm install eui64`
@@ -32,7 +34,10 @@ eui64('11:22:33:44:55:bogus') // returns null
 
 ```
 
-## eui64(input,options)
+
+## Usage
+
+### eui64(input,options)
 
 Parse the given input and return an object or null on failure
 
@@ -47,14 +52,19 @@ Parse the given input and return an object or null on failure
     ```
 
 
-## Eui64.toString()
+### Eui64.toString()
 
 Output current value to string with each octet separated by ':'
 
-## Eui64.toString()
+### Eui64.toString()
 
 Return buffer of current value
 
-## Eui64.oui()
+### Eui64.oui()
 
 Return Number representation of the oui, assumes 36 bit oui.
+
+
+## License
+
+MIT
